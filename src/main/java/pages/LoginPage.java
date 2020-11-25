@@ -48,6 +48,11 @@ public class LoginPage {
     public MainPage login() {
         this.typeEmail(LOGIN);
         this.typePassword(PASSWORD);
+        WebDriverWait wait10 = (new WebDriverWait(driver, 10));
+        // попробуем тупа задержку, потому что всё грузится по два раза
+
+        // ждём цитаты - они грузятся последние
+        wait10.until(ExpectedConditions.presenceOfElementLocated(buttonLogin));
         driver.findElement(buttonLogin).click();
         return new MainPage(driver);
 

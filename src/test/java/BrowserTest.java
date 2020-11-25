@@ -9,16 +9,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
+import pages.LoginPage;
+import pages.MainPage;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import static helper.MakeScreen.makeScreenShot;
 
 @Log4j2
 
 public class BrowserTest {
 
     @Test
-    public void testLogin() throws MalformedURLException {
+    public void testLogin() throws IOException {
 
         URL serverUrl = new URL("http://127.0.0.1:4723/wd/hub");
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -29,6 +34,8 @@ public class BrowserTest {
         capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
         // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "2a41c0c8610d7ece");
         HomePage homePage1;
+        LoginPage loginPage1;
+        MainPage mainPage1;
 
 
         log.info("1. Create driver");
@@ -40,16 +47,24 @@ public class BrowserTest {
         driver.get("https://habitica.com");
         homePage1 = new HomePage(driver);
         homePage1.checkLoading();
-        
+
 
         log.info("3. Enter email and pass");
+        loginPage1 = homePage1.clickOnSingIn();
+        loginPage1.checkLoading();
+        log.info("Open Login Page");
+        makeScreenShot(driver);
 
 
         log.info("4. Click login");
+        mainPage1 = loginPage1.login();
+        log.info("Login");
+
+
+        //mainPage1.checkLoading();
         log.info("5. Check");
-
+        // makeScreenShot(driver);
         driver.quit();
-
     }
     @AfterEach public void closeDrive() {
             log.info("6. Close driver");
