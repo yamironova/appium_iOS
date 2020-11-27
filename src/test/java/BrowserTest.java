@@ -29,10 +29,15 @@ public class BrowserTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
-       // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "192.168.205.101:5555");
+       // через генимоушен (android 9)
+        // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "192.168.205.101:5555");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+
+        // через реальный телефон (android 10)
         // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "2a41c0c8610d7ece");
+        // add app
+        // capabilities.setCapability(MobileCapabilityType.APP, "G:/Codeart/automatization/Idea_projects/apk/Sol.apk");
         HomePage homePage1;
         LoginPage loginPage1;
         MainPage mainPage1;
