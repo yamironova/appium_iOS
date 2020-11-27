@@ -4,6 +4,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,11 +20,10 @@ import java.net.URL;
 import static helper.MakeScreen.makeScreenShot;
 
 @Log4j2
-
-public class AppTest {
+public class ClockTest {
 
     @Test
-    public void testApp() throws IOException {
+    public void calApp() throws IOException {
 
         URL serverUrl = new URL("http://127.0.0.1:4723/wd/hub");
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -34,11 +34,16 @@ public class AppTest {
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         // capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 
-        // через реальный телефон (android 10)
+        // через реальное устройство (android 10)
         // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "2a41c0c8610d7ece");
-        // add app
-        capabilities.setCapability(MobileCapabilityType.APP, "G:/Codeart/automatization/Idea_projects/apk/Sol.apk");
 
+        // install app
+        // capabilities.setCapability(MobileCapabilityType.APP,
+           //     "G:/Codeart/automatization/Idea_projects/apk/APK.apk");
+
+        // open app
+        capabilities.setCapability("appPackage", "com.google.android.deskclock");
+        capabilities.setCapability("appActivity", "com.android.deskclock.DeskClock");
 
 
         log.info("1. Create driver");
@@ -46,12 +51,19 @@ public class AppTest {
         AppiumDriver driver = new AndroidDriver(serverUrl, capabilities);
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Clock']")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Timer']")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Stopwatch']")).click();
+       
+
 
 
 
 
         log.info("5. quit");
 
-        driver.quit();
+       driver.quit();
     }
+
 }
