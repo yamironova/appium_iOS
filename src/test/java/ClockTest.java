@@ -2,11 +2,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import lombok.extern.log4j.Log4j2;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,13 +14,15 @@ import java.net.URL;
 
 @Log4j2
 public class ClockTest {
-    private AndroidDriver driver;
+    private AppiumDriver driver;
+    private URL serverUrl;
+    private DesiredCapabilities capabilities;
+
 
     @BeforeEach
     public void createDriver() throws MalformedURLException {
-
-        URL serverUrl = new URL("http://127.0.0.1:4723/wd/hub");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        serverUrl = new URL("http://127.0.0.1:4723/wd/hub");
+        capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
         // через генимоушен (android 9)
@@ -44,20 +43,22 @@ public class ClockTest {
 
 
         log.info("1. Create driver");
-
         driver = new AndroidDriver(serverUrl, capabilities);
+
+
 
     }
 
     @Test
-    public void calApp(){
+    public void calApp() throws MalformedURLException {
+
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        /*  driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Clock']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Timer']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Stopwatch']")).click();
-         driver.quit(); */
+
 
         log.info("5. quit");
 
@@ -65,7 +66,7 @@ public class ClockTest {
 
     @AfterEach()
     public void closeDriver() {
-
+        driver.quit();
     }
 
 }
