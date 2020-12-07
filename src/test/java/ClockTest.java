@@ -4,7 +4,9 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,10 +17,10 @@ import java.net.URL;
 
 @Log4j2
 public class ClockTest {
-    private static AndroidDriver driver;
+    private AndroidDriver driver;
 
-    @BeforeAll
-    static void createDriver() throws MalformedURLException {
+    @BeforeEach
+    public void createDriver() throws MalformedURLException {
 
         URL serverUrl = new URL("http://127.0.0.1:4723/wd/hub");
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -48,21 +50,22 @@ public class ClockTest {
     }
 
     @Test
-    public void calApp() throws IOException {
+    public void calApp(){
 
-        // WebDriverWait wait = new WebDriverWait(driver, 10);
-        driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        /*  driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Clock']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Timer']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Stopwatch']")).click();
+         driver.quit(); */
 
         log.info("5. quit");
 
     }
 
-    @AfterAll()
+    @AfterEach()
     public void closeDriver() {
-        driver.quit();
+
     }
 
 }
