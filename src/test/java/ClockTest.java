@@ -1,3 +1,4 @@
+import drivers.AndroidStudioEmu;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -21,31 +22,7 @@ public class ClockTest {
 
     @BeforeEach
     public void createDriver() throws MalformedURLException {
-        serverUrl = new URL("http://127.0.0.1:4723/wd/hub");
-        capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
-        // через генимоушен (android 9)
-        // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "192.168.205.101:5555");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
-        // capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-
-        // через реальное устройство (android 10)
-        // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "2a41c0c8610d7ece");
-
-        // install app
-        // capabilities.setCapability(MobileCapabilityType.APP,
-        //     "G:/Codeart/automatization/Idea_projects/apk/APK.apk");
-
-        // open app
-        capabilities.setCapability("appPackage", "com.google.android.deskclock");
-        capabilities.setCapability("appActivity", "com.android.deskclock.DeskClock");
-
-
-        log.info("1. Create driver");
-        driver = new AndroidDriver(serverUrl, capabilities);
-
-
+        driver = AndroidStudioEmu.setASEmu();
 
     }
 
