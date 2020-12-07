@@ -4,15 +4,15 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ClockPage {
+public class ClockPageASEmu {
     private AppiumDriver driver;
 
-    public ClockPage(AppiumDriver driver) { this.driver = driver; }
+    public ClockPageASEmu(AppiumDriver driver) { this.driver = driver; }
 
-    private By alarm = By.xpath("//android.widget.TextView[@text='CLOCK']");
-    private By clock = By.xpath("//android.widget.TextView[@text='ALARM']");
-    private By timer = By.xpath("//android.widget.TextView[@text='TIMER']");
-    private By stopwatch = By.xpath("//android.widget.TextView[@text='STOPWATCH']");
+    private By alarm = By.xpath("//android.widget.TextView[@text='Clock']");
+    private By clock = By.xpath("//android.widget.TextView[@text='Alarm']");
+    private By timer = By.xpath("//android.widget.TextView[@text='Timer']");
+    private By stopwatch = By.xpath("//android.widget.TextView[@text='Stopwatch']");
 
     public void someClick() {
         WebDriverWait wait = new WebDriverWait(driver, 10);

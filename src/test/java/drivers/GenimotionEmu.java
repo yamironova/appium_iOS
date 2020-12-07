@@ -17,20 +17,20 @@ public class GenimotionEmu {
         serverUrl = new URL("http://127.0.0.1:4723/wd/hub");
         capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "192.168.205.101:5555");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "192.168.205.102:5555");
         // capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 
         // через реальное устройство (android 10)
         // capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "2a41c0c8610d7ece");
 
         // install app
-        // capabilities.setCapability(MobileCapabilityType.APP,
-        //     "G:/Codeart/automatization/Idea_projects/apk/APK.apk");
+       // capabilities.setCapability(MobileCapabilityType.APP,
+        //    "G:/Codeart/automatization/Idea_projects/apk/APKp.apk");
 
         // open app
-        capabilities.setCapability("appPackage", "com.android.deskclock");
-        capabilities.setCapability("appActivity", "com.android.deskclock.DeskClock");
+       capabilities.setCapability("appPackage", "com.android.deskclock");
+       capabilities.setCapability("appActivity", "com.android.deskclock.DeskClock");
 
         driver = new AndroidDriver(serverUrl, capabilities);
 
