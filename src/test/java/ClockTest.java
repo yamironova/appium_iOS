@@ -15,7 +15,7 @@ import java.net.URL;
 
 @Log4j2
 public class ClockTest {
-    private static AppiumDriver driver;
+    private static AndroidDriver driver;
 
     @BeforeAll
     static void createDriver() throws MalformedURLException {
@@ -50,7 +50,7 @@ public class ClockTest {
     @Test
     public void calApp() throws IOException {
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        // WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.findElement(By.xpath("//android.widget.TextView[@text='Alarm']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Clock']")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Timer']")).click();
