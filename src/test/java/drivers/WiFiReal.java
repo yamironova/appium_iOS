@@ -18,7 +18,7 @@ public class WiFiReal {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "192.168.0.76:4777");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "192.168.0.89:4777");
         // capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 
         // open app
