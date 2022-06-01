@@ -1,18 +1,19 @@
 package pages;
 // пакеты Селениума
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.appium.java_client.ios.IOSDriver;
 
 
 
 
 
 public class HomePage {
-    private WebDriver driver;
+    private IOSDriver  driver;
 
-    public HomePage(WebDriver driver) {
+    public HomePage(IOSDriver  driver) {
         this.driver = driver;
     }
 
@@ -43,8 +44,11 @@ public class HomePage {
         return text;
     }
 
+
     public LoginPage clickOnSingIn() {
         driver.findElement(singIn).click();
         return new LoginPage(driver);
     }
+
+  
 }

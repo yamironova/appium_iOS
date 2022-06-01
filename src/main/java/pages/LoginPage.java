@@ -1,8 +1,9 @@
 package pages;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.appium.java_client.ios.IOSDriver;
 
 import static config.EnvConfig.LOGIN;
 import static config.EnvConfig.PASSWORD;
@@ -10,9 +11,9 @@ import static config.EnvConfig.PASSWORD;
 
 public class LoginPage {
 
-    private WebDriver driver;
+    private  IOSDriver driver;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage(IOSDriver  driver) {
         this.driver = driver;
     }
 

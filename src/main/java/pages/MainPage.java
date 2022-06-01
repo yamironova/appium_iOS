@@ -5,10 +5,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.ios.IOSDriver;
+
 import java.io.IOException;
 public class MainPage {
-    private WebDriver driver;
-    public MainPage(WebDriver driver) {
+    private IOSDriver  driver;
+    public MainPage(IOSDriver driver) {
         this.driver = driver;
     }
 

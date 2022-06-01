@@ -1,18 +1,14 @@
+package drivers;
 import io.appium.java_client.ios.*;
-import lombok.extern.log4j.Log4j2;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.IOException;
 import java.net.URL;
 
-@Log4j2
+public class IOSEmu {
 
-public class AppTest {
-
-    @Test
-    public void testApp() throws IOException {
+    public static IOSDriver runApp() throws IOException {
 
 
         DesiredCapabilities cap = new DesiredCapabilities();
@@ -27,7 +23,7 @@ public class AppTest {
   
         IOSDriver driver = new IOSDriver(url, cap);
 
-
-        driver.quit();
+        return driver;
     }
+
 }
